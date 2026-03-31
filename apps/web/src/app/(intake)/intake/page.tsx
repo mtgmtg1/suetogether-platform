@@ -2,22 +2,12 @@
 
 export default function intakePage() {
   return (
-    <div className="min-h-screen bg-[#0B192E] text-white font-body selection:bg-cyan-400 selection:text-slate-900">
+    <div className="w-full text-white font-body selection:bg-cyan-400 selection:text-slate-900">
       {/* Generated from Intake_RAG_stitch.html */}
       
-{/*  TopAppBar  */}
-<header className="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#0B192E]/60 backdrop-blur-xl dark:bg-[#0B192E]/60 shadow-[0_24px_48px_-12px_rgba(11,25,46,0.08)]">
-<div className="flex items-center gap-3">
-<span className="material-symbols-outlined text-cyan-400 text-2xl">gavel</span>
-<h1 className="text-xl font-black text-white tracking-tight font-headline">SueTogether</h1>
-</div>
-<div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-cyan-400/30">
-<img alt="User avatar" className="w-full h-full object-cover" data-alt="High-end professional portrait of a legal executive with sharp lighting and deep navy background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMvKP1Ck_dWgLRFeFCM2mXnvAKOgV34XRpeXTwdcwBJWx4VMQlHaoqs6vf8ALhKMRzatERzzVIS3sT7bm9Lo3-9e0D2fw-UBXR45em7ohws6WSQ9yVB4in9tISbDpbbVA9uV2DzukgugqfGUAMm6fZd3HAs0ty3BN8i8Vj_O3Gbiqad1rS9dJegaCTS1rZsGrf-_QUD2SBgQJ4yPzZIlgsPVkxnzjvT3_rg_wx58WyFZWJ1OuZbaigCfPxWwZ1KJOTF-fkjq8DkKA"/>
-</div>
-</header>
-{/*  Main Content Canvas  */}
-<main className="pt-24 pb-32 px-4 space-y-8 max-w-md mx-auto">
-{/*  Intake Conversational Stepper  */}
+      {/*  Main Content Canvas  */}
+      <main className="pb-32 px-4 space-y-8 max-w-7xl mx-auto">
+        {/*  Intake Conversational Stepper  */}
 <section className="space-y-4">
 <div className="flex justify-between items-end px-2">
 <span className="text-cyan-400 font-bold font-headline text-sm tracking-widest uppercase">Step 2 of 5</span>
@@ -80,7 +70,7 @@ export default function intakePage() {
 <span className="material-symbols-outlined text-cyan-400 text-lg">smart_toy</span>
 </div>
 <div className="glass-card p-4 rounded-2xl rounded-tl-none">
-<p className="text-sm leading-relaxed text-slate-200">Based on your input, I've identified a strong argument for "Breach of Fiduciary Duty." Would you like me to draft a preliminary summary?</p>
+<p className="text-sm leading-relaxed text-slate-200">Based on your input, I&apos;ve identified a strong argument for &quot;Breach of Fiduciary Duty.&quot; Would you like me to draft a preliminary summary?</p>
 </div>
 </div>
 {/*  User Message  */}
@@ -95,39 +85,18 @@ export default function intakePage() {
 </div>
 </section>
 </main>
-{/*  Smart Input Bar  */}
-<div className="fixed bottom-24 left-0 w-full px-4 z-40">
-<div className="glass-card rounded-full p-2 flex items-center gap-3 shadow-[0_24px_48px_-12px_rgba(0,227,253,0.15)] ring-1 ring-cyan-400/20">
-<button className="w-10 h-10 rounded-full flex items-center justify-center text-slate-400 hover:text-cyan-400 transition-colors">
-<span className="material-symbols-outlined">attach_file</span>
-</button>
-<input className="flex-1 bg-transparent border-none focus:ring-0 text-sm text-white placeholder-slate-500 font-body" placeholder="Ask AI about your case..." type="text"/>
-<button className="w-10 h-10 rounded-full bg-gradient-to-br from-[#006875] to-[#00daf3] flex items-center justify-center text-white shadow-lg active:scale-90 transition-transform">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: '"FILL" 1' }}>gavel</span>
-</button>
-</div>
-</div>
-{/*  BottomNavBar  */}
-<nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#0B192E]/80 backdrop-blur-2xl dark:bg-[#0B192E]/80 rounded-t-[1.5rem] shadow-[0_-12px_32px_rgba(11,25,46,0.15)]">
-<a className="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-cyan-200 transition-all" href="#">
-<span className="material-symbols-outlined">home</span>
-<span className="text-[10px] font-semibold tracking-tighter uppercase font-label mt-1">Home</span>
-</a>
-{/*  Active Tab: Intake  */}
-<a className="flex flex-col items-center justify-center bg-gradient-to-br from-[#006875] to-[#00daf3] text-white rounded-2xl px-6 py-2 shadow-[0_0_15px_rgba(0,227,253,0.3)] scale-90 transition-transform" href="#">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: '"FILL" 1' }}>assignment_ind</span>
-<span className="text-[10px] font-semibold tracking-tighter uppercase font-label mt-1">Intake</span>
-</a>
-<a className="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-cyan-200 transition-all" href="#">
-<span className="material-symbols-outlined">psychology</span>
-<span className="text-[10px] font-semibold tracking-tighter uppercase font-label mt-1">Intelligence</span>
-</a>
-<a className="flex flex-col items-center justify-center text-slate-400 px-4 py-2 hover:text-cyan-200 transition-all" href="#">
-<span className="material-symbols-outlined">description</span>
-<span className="text-[10px] font-semibold tracking-tighter uppercase font-label mt-1">Documents</span>
-</a>
-</nav>
-
+  {/*  Smart Input Bar  */}
+        <div className="fixed bottom-10 left-0 w-full px-4 z-40 max-w-7xl mx-auto inset-x-0">
+          <div className="glass-card rounded-full p-2 flex items-center gap-3 shadow-[0_24px_48px_-12px_rgba(0,227,253,0.15)] ring-1 ring-cyan-400/20">
+            <button className="w-10 h-10 rounded-full flex items-center justify-center text-slate-400 hover:text-cyan-400 transition-colors">
+              <span className="material-symbols-outlined">attach_file</span>
+            </button>
+            <input className="flex-1 bg-transparent border-none focus:ring-0 text-sm text-white placeholder-slate-500 font-body" placeholder="Ask AI about your case..." type="text"/>
+            <button className="w-10 h-10 rounded-full bg-gradient-to-br from-[#006875] to-[#00daf3] flex items-center justify-center text-white shadow-lg active:scale-90 transition-transform">
+              <span className="material-symbols-outlined" style={{ fontVariationSettings: '"FILL" 1' }}>gavel</span>
+            </button>
+          </div>
+        </div>
     </div>
   );
 }

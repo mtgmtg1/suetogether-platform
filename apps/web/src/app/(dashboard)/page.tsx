@@ -2,28 +2,10 @@
 
 export default function dashboardPage() {
   return (
-    <div className="min-h-screen bg-[#0B192E] text-white font-body selection:bg-cyan-400 selection:text-slate-900">
+    <div className="w-full text-white font-body selection:bg-cyan-400 selection:text-slate-900">
       {/* Generated from Dashboard_stitch.html */}
       
-{/*  TopAppBar  */}
-<header className="fixed top-0 w-full z-50 bg-slate-50/60 dark:bg-slate-900/60 backdrop-blur-xl shadow-sm shadow-slate-900/5 flex justify-between items-center px-6 py-4">
-<div className="flex items-center gap-3">
-<div className="w-10 h-10 rounded-full overflow-hidden">
-<img alt="User Profile" className="w-full h-full object-cover" data-alt="Professional headshot of a lawyer in a dark suit against a neutral architectural background, soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0zf9C5Alkh5blk88wO8SJp86bmsCjBVyqoJjXRN1BMOLkJg2-oHoW5HYeV45Qy5cEKDIMxkSitDC0pnRB5RVUK6cO1W4-iOqA4Rq7_jgcGk8IsDC0Q0XqAT6WoPyjlKEa8wUaKIbCEBYRevD2JDDf0p5yCnHN_-WDPFvgOB9xfyvhicDOlu_y51_ZiF6Hfa6dhzSYdo34ycsCxSnixM2f01ONPeI4K2_CQEKHLhSiKFpxY0DZg2hmC-qe17xoafwaYxIH6ukmvPk"/>
-</div>
-<span className="text-xl font-black tracking-widest text-slate-900 dark:text-white font-headline">SueTogether</span>
-</div>
-<div className="flex items-center gap-4">
-<button className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors active:scale-95 duration-150">
-<span className="material-symbols-outlined" data-icon="notifications">notifications</span>
-</button>
-<button className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-high text-on-surface font-semibold text-sm transition-all hover:bg-surface-variant">
-<span className="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
-                System Settings
-            </button>
-</div>
-</header>
-<main className="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<div className="pb-32 max-w-7xl mx-auto">
 {/*  Hero Section: Progress Ring & Greeting  */}
 <section className="mb-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 <div className="lg:col-span-7">
@@ -31,7 +13,7 @@ export default function dashboardPage() {
                     Case Progress: <span className="text-secondary">Accelerated</span>
 </h1>
 <p className="text-lg text-on-primary-container max-w-xl leading-relaxed">
-                    The AI analysis of 'Johnson vs. TechCorp' is reaching maturity. 78% of liability hurdles have been cleared. Ready for settlement calculation?
+                    The AI analysis of &apos;Johnson vs. TechCorp&apos; is reaching maturity. 78% of liability hurdles have been cleared. Ready for settlement calculation?
                 </p>
 <div className="mt-8 flex flex-wrap gap-4">
 <button className="liquid-neon-btn px-8 py-4 rounded-3xl text-white font-bold tracking-wide flex items-center gap-3 shadow-xl shadow-secondary/20 active:scale-95 transition-all">
@@ -164,39 +146,12 @@ export default function dashboardPage() {
                 </button>
 </div>
 </div>
-</main>
-{/*  Floating Action Button  */}
-<button className="fixed bottom-24 right-6 md:bottom-32 md:right-10 w-16 h-16 rounded-full liquid-neon-btn text-white shadow-[0_12px_24px_-8px_rgba(0,227,253,0.5)] z-[60] flex items-center justify-center transition-all hover:scale-110 active:scale-90 group">
+</div>
+      {/*  Floating Action Button  */}
+<button className="fixed bottom-10 right-10 w-16 h-16 rounded-full liquid-neon-btn text-white shadow-[0_12px_24px_-8px_rgba(0,227,253,0.5)] z-[60] flex items-center justify-center transition-all hover:scale-110 active:scale-90 group">
 <span className="material-symbols-outlined text-[32px]" data-icon="add">add</span>
 <span className="absolute right-full mr-4 px-4 py-2 bg-primary-container text-white text-xs font-bold rounded-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">New Intake</span>
 </button>
-{/*  BottomNavBar  */}
-<nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-3 bg-white/70 dark:bg-slate-900/70 backdrop-blur-2xl shadow-[0_-12px_40px_-15px_rgba(14,28,49,0.1)] rounded-t-3xl">
-{/*  Home (Active)  */}
-<a className="flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-800 text-cyan-700 dark:text-cyan-300 rounded-2xl px-5 py-2 transition-all active:scale-90 duration-200" href="#">
-<span className="material-symbols-outlined" data-icon="home_app_logo" style={{ fontVariationSettings: '"FILL" 1' }}>home_app_logo</span>
-<span className="font-inter text-xs font-semibold tracking-wide uppercase mt-1">Home</span>
-</a>
-{/*  Cases  */}
-<a className="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-cyan-500 transition-all active:scale-90 duration-200" href="#">
-<span className="material-symbols-outlined" data-icon="folder_open">folder_open</span>
-<span className="font-inter text-xs font-semibold tracking-wide uppercase mt-1">Cases</span>
-</a>
-{/*  Analytics  */}
-<a className="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-cyan-500 transition-all active:scale-90 duration-200" href="#">
-<span className="material-symbols-outlined" data-icon="analytics">analytics</span>
-<span className="font-inter text-xs font-semibold tracking-wide uppercase mt-1">Analytics</span>
-</a>
-{/*  Messages  */}
-<a className="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-cyan-500 transition-all active:scale-90 duration-200" href="#">
-<div className="relative">
-<span className="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
-<span className="absolute -top-1 -right-1 w-2 h-2 bg-secondary rounded-full"></span>
-</div>
-<span className="font-inter text-xs font-semibold tracking-wide uppercase mt-1">Messages</span>
-</a>
-</nav>
-
     </div>
   );
 }

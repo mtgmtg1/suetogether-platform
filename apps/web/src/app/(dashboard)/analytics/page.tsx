@@ -2,35 +2,10 @@
 
 export default function AnalyticsPage() {
   return (
-    <div className="min-h-screen bg-[#0B192E] text-white font-body selection:bg-cyan-400 selection:text-slate-900">
+    <div className="w-full text-white font-body selection:bg-cyan-400 selection:text-slate-900">
       {/* Generated from Analytics_stitch.html */}
       
-{/*  TopAppBar  */}
-<header className="fixed top-0 w-full z-50 bg-[#0B192E]/60 backdrop-blur-xl dark:bg-[#0B192E]/60 shadow-[0_24px_48px_-12px_rgba(11,25,46,0.08)] flex items-center justify-between px-6 py-4 w-full">
-<div className="flex items-center gap-4">
-<div className="w-10 h-10 rounded-full overflow-hidden bg-primary-container flex items-center justify-center">
-<img alt="User Profile" className="w-full h-full object-cover" data-alt="professional male portrait with minimalist lighting and corporate attire on a clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1-fbVqHpTYP5ZW_M7IhevBzoJmNVwIhCFIzdzBLgzfW6cLXvASptRGqSxiUuF2YJrxzfn0fQX6kh5sD7l_gbvsUhXH5P_98on9qTmGlnZu50yjIAuNnUX88uHewHc_BOZH6pdAFOUDPzQ1jWdDtbRZcspWUQM2U-WmKMWNqTVQWPzK21k_gcE32lhnLnESWtehZbEJKtRLqr_-6XBRHAW-mCygHtJ4GGf-Z4PNJwU9ek2jz5aDdgIN3-PQOiODjFhwf5D34eE8Aw"/>
-</div>
-<h1 className="font-['Manrope'] font-bold tracking-tight text-xl text-[#f7f9fb]">Analytics</h1>
-</div>
-<div className="hidden md:flex items-center gap-8">
-<nav className="flex items-center gap-6">
-<a className="text-slate-400 font-label text-sm tracking-widest uppercase hover:text-[#00e3fd] transition-all" href="#">Cases</a>
-<a className="text-[#00e3fd] font-label text-sm tracking-widest uppercase flex items-center gap-1" href="#">
-<span className="w-1.5 h-1.5 rounded-full bg-[#00e3fd]"></span>
-                    Analytics
-                </a>
-<a className="text-slate-400 font-label text-sm tracking-widest uppercase hover:text-[#00e3fd] transition-all" href="#">Settlements</a>
-<a className="text-slate-400 font-label text-sm tracking-widest uppercase hover:text-[#00e3fd] transition-all" href="#">Settings</a>
-</nav>
-<div className="h-8 w-[1px] bg-white/10"></div>
-<span className="font-headline font-extrabold text-[#f7f9fb] tracking-tighter text-xl">SueTogether</span>
-</div>
-<button className="md:hidden text-[#f7f9fb] p-2">
-<span className="material-symbols-outlined">menu</span>
-</button>
-</header>
-<main className="pt-24 pb-32 px-6 max-w-7xl mx-auto space-y-10">
+<div className="pb-32 max-w-7xl mx-auto space-y-10">
 {/*  Dashboard Header Hero  */}
 <section className="flex flex-col md:flex-row justify-between items-end gap-6">
 <div>
@@ -76,8 +51,8 @@ export default function AnalyticsPage() {
 <svg className="absolute bottom-0 w-full h-48 overflow-visible" viewBox="0 0 800 200">
 <defs>
 <linearGradient id="chartLine" x1="0" x2="0" y1="0" y2="1">
-<stop offset="0%" stop-color="#00e3fd"></stop>
-<stop offset="100%" stop-color="#006875" stop-opacity="0"></stop>
+<stop offset="0%" stopColor="#00e3fd"></stop>
+<stop offset="100%" stopColor="#006875" stopOpacity="0"></stop>
 </linearGradient>
 <filter id="glow">
 <feGaussianBlur result="coloredBlur" stdDeviation="4"></feGaussianBlur>
@@ -134,14 +109,14 @@ export default function AnalyticsPage() {
 <label className="text-slate-300 font-medium text-sm">Liability Confidence</label>
 <span className="text-[#00e3fd] font-bold">78%</span>
 </div>
-<input max="100" min="0" type="range" value="78"/>
+<input max="100" min="0" type="range" defaultValue="78"/>
 </div>
 <div className="space-y-4">
 <div className="flex justify-between items-center">
 <label className="text-slate-300 font-medium text-sm">Estimated Damages</label>
 <span className="text-[#00e3fd] font-bold">$2.5M</span>
 </div>
-<input max="1000" min="0" type="range" value="250"/>
+<input max="1000" min="0" type="range" defaultValue="250"/>
 </div>
 </div>
 </div>
@@ -199,27 +174,8 @@ export default function AnalyticsPage() {
 </div>
 </div>
 </div>
-</main>
-{/*  BottomNavBar (Mobile Only)  */}
-<nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-[#0B192E]/80 backdrop-blur-2xl dark:bg-[#0B192E]/80 z-50 rounded-t-3xl shadow-[0_-8px_24px_rgba(11,25,46,0.15)]">
-<a className="flex flex-col items-center justify-center text-slate-400 px-5 py-2" href="#">
-<span className="material-symbols-outlined">gavel</span>
-<span className="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Cases</span>
-</a>
-<a className="flex flex-col items-center justify-center bg-[#006875] text-[#00e3fd] rounded-2xl px-5 py-2 shadow-[0_0_15px_rgba(0,227,253,0.3)] scale-90 duration-150 ease-out" href="#">
-<span className="material-symbols-outlined">monitoring</span>
-<span className="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Analytics</span>
-</a>
-<a className="flex flex-col items-center justify-center text-slate-400 px-5 py-2" href="#">
-<span className="material-symbols-outlined">payments</span>
-<span className="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Settlements</span>
-</a>
-<a className="flex flex-col items-center justify-center text-slate-400 px-5 py-2" href="#">
-<span className="material-symbols-outlined">settings</span>
-<span className="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Settings</span>
-</a>
-</nav>
-
-    </div>
+</div>
+</div>
+</div>
   );
 }

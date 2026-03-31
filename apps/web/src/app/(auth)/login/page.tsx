@@ -106,7 +106,7 @@ export default function AuthPage() {
 </div>
 </div>
 <p className="text-primary-container/80 font-body leading-relaxed italic">
-                        "The Digital Jurist OS integrates disparate legal data into a single, cohesive command center. Clarity is the ultimate authority."
+                        &quot;The Digital Jurist OS integrates disparate legal data into a single, cohesive command center. Clarity is the ultimate authority.&quot;
                     </p>
 <div className="flex -space-x-3 pt-2">
 <div className="w-10 h-10 rounded-full border-2 border-white bg-slate-200">
