@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SueTogether | Digital Jurist OS Login</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#9cf0ff",
+              "primary": "#000000",
+              "primary-fixed-dim": "#bac7e3",
+              "on-tertiary-fixed-variant": "#5b4224",
+              "surface-container-low": "#f2f4f6",
+              "primary-container": "#0e1c31",
+              "tertiary-fixed-dim": "#e4c099",
+              "outline": "#75777d",
+              "surface-container-highest": "#e0e3e5",
+              "tertiary": "#000000",
+              "surface-variant": "#e0e3e5",
+              "on-primary-fixed": "#0e1c31",
+              "on-error": "#ffffff",
+              "on-error-container": "#93000a",
+              "surface-bright": "#f7f9fb",
+              "secondary": "#006875",
+              "on-tertiary-container": "#9d7e5b",
+              "secondary-container": "#00e3fd",
+              "on-surface": "#191c1e",
+              "background": "#f7f9fb",
+              "secondary-fixed-dim": "#00daf3",
+              "on-primary-container": "#77849e",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed": "#2a1801",
+              "surface-dim": "#d8dadc",
+              "outline-variant": "#c5c6cd",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#2d3133",
+              "surface-tint": "#525f77",
+              "on-secondary-container": "#00616d",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e6e8ea",
+              "on-secondary-fixed-variant": "#004f58",
+              "on-secondary-fixed": "#001f24",
+              "on-surface-variant": "#44474d",
+              "inverse-on-surface": "#eff1f3",
+              "on-primary-fixed-variant": "#3a475e",
+              "tertiary-fixed": "#ffddb8",
+              "on-secondary": "#ffffff",
+              "primary-fixed": "#d6e3ff",
+              "tertiary-container": "#2a1801",
+              "surface-container-lowest": "#ffffff",
+              "surface": "#f7f9fb",
+              "on-primary": "#ffffff",
+              "surface-container": "#eceef0",
+              "on-background": "#191c1e",
+              "inverse-primary": "#bac7e3"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        background: rgba(247, 249, 251, 0.6);
+      }
+      .liquid-neon-btn {
+        background: linear-gradient(135deg, #006875 0%, #00daf3 100%);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .legal-gradient-bg {
+        background: radial-gradient(circle at top right, #00e3fd10, transparent), 
+                    linear-gradient(180deg, #0e1c31 0%, #07111d 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container selection:text-on-secondary-container min-h-screen flex flex-col">
+<!-- Top Navigation Anchor (Shared Component) -->
+<!-- Suppression logic: Shell is suppressed for Transactional/Auth flows per instructions, 
+         but we keep a minimal brand anchor if required by "Digital Jurist OS" feel. 
+         However, the instructions mandate suppression for Login/Sign-up. 
+         I will include only the branding to maintain "SueTogether" identity without full nav. -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#f7f9fb]/60 backdrop-blur-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="gavel">gavel</span>
+<h1 class="text-xl font-bold tracking-tight text-[#0e1c31] font-headline">SueTogether</h1>
+</div>
+<div class="hidden md:flex gap-6">
+<span class="text-xs font-label uppercase tracking-widest text-on-surface-variant/60">The Digital Jurist OS</span>
+</div>
+</header>
+<main class="flex-grow flex flex-col md:flex-row min-h-screen pt-16 md:pt-0">
+<!-- Left Side (Top on Mobile): The Form Stage -->
+<section class="w-full md:w-1/2 flex items-center justify-center p-6 md:p-12 lg:p-24 bg-surface z-10">
+<div class="w-full max-w-md space-y-10">
+<div class="space-y-2">
+<h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tight text-primary-container">
+                        Welcome back.
+                    </h2>
+<p class="text-on-surface-variant font-body">
+                        Access your digital legal terminal and case management.
+                    </p>
+</div>
+<!-- Bento-styled Login Card -->
+<div class="space-y-6">
+<div class="space-y-4">
+<div class="space-y-1">
+<label class="text-xs font-label uppercase tracking-widest text-on-surface-variant px-1">Email or Username</label>
+<input class="w-full px-5 py-4 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-secondary-container transition-all placeholder:text-outline-variant" placeholder="justice.scales@firm.os" type="text"/>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between items-center px-1">
+<label class="text-xs font-label uppercase tracking-widest text-on-surface-variant">Password</label>
+<a class="text-xs font-label uppercase tracking-widest text-secondary hover:text-secondary-fixed-dim transition-colors" href="#">Forgot?</a>
+</div>
+<input class="w-full px-5 py-4 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-secondary-container transition-all placeholder:text-outline-variant" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<button class="liquid-neon-btn text-white font-headline font-bold py-4 rounded-xl shadow-lg shadow-secondary/20 hover:scale-[0.98] transition-all duration-300">
+                            Login to Terminal
+                        </button>
+<button class="bg-surface-container-highest text-on-primary-container font-headline font-bold py-4 rounded-xl hover:bg-surface-container-high transition-all">
+                            Request Access
+                        </button>
+</div>
+</div>
+<!-- Social Authentication Cluster -->
+<div class="space-y-6">
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-outline-variant opacity-20"></div>
+<span class="flex-shrink mx-4 text-xs font-label uppercase tracking-widest text-outline-variant">Enterprise SSO</span>
+<div class="flex-grow border-t border-outline-variant opacity-20"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-all">
+<img alt="Google" class="w-5 h-5" data-alt="minimalist google logo on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR3cYrqJu6eA8B5SXvOB-Opu9J-VhE0g2EZmcTMbegHUcg0R9-h2oNC4IBwjgZNTIpieQMF70kYNV0u0o0n9iSSiC2ALWap7BAbRWER6CItFj5MwcLkyx2nKbgTrhaubcNdH6LPiQi74LRM8V1uA-TfwcCqJTGsWXk-wSVIz0Ore9NEDpQA3ey8KBC-liioahVzjx2_WMlAvxGwfYZy4hsUcTWfWQ4jyj84VxKe3e7DRY3GIf2wZDrnQTahe2SsFOrq66YHn0qSvY"/>
+<span class="text-sm font-semibold font-body">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-primary-container" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="text-sm font-semibold font-body">Microsoft</span>
+</button>
+</div>
+</div>
+<p class="text-center text-sm text-on-surface-variant/60 font-body">
+                    By logging in, you agree to the <a class="underline hover:text-secondary" href="#">Statutes of Service</a>.
+                </p>
+</div>
+</section>
+<!-- Right Side (Bottom on Mobile): Abstract Visual Authority -->
+<section class="w-full md:w-1/2 min-h-[400px] md:min-h-screen relative flex items-center justify-center overflow-hidden legal-gradient-bg">
+<!-- Background Abstract Image -->
+<div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay">
+<img class="w-full h-full object-cover" data-alt="abstract architectural close-up of a modern glass and steel building reflecting deep blue and cyan light, clean lines and sharp angles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUxG_GTSzBaFFkMgSIIliIfgfetSXsYeEX1UJ0VeO0TAOzy3jugzSR-azvIxUgWcSewjyEjK4_uwjmb7u-VWz6PDrFKZ8WYlCDPlBJADDeQbmdu6_1ytDyQcQX4OWPGFosr4wmNBTXqcQv7SHUCaEXVe4xCGQP-DABCe5Wgg_C01lCx8XT1z_wFNBTZLGPjC0MCY-Q8334SRf_80QZ8GS08SQnuxW7irIdS1ILohMzPoBaSooS2uvXeOgdUqwv-ra5xsteR7WVVzY"/>
+</div>
+<!-- Floating Bento Insight (Glassmorphism) -->
+<div class="relative z-10 p-8 md:p-12 w-full max-w-lg">
+<div class="glass-effect rounded-2xl p-10 border border-white/10 space-y-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full liquid-neon-btn flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="security" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-primary-container text-xl">Protocol Secured</h3>
+<p class="text-xs font-label uppercase tracking-widest text-on-primary-container">Encryption Tier 4</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-sm font-body text-primary-container font-medium">Digital Jurist Integrity</span>
+<span class="text-2xl font-headline font-extrabold text-secondary">99.9%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full liquid-neon-btn w-[99.9%] rounded-full shadow-[0_0_10px_#00daf3]"></div>
+</div>
+</div>
+<p class="text-primary-container/80 font-body leading-relaxed italic">
+                        "The Digital Jurist OS integrates disparate legal data into a single, cohesive command center. Clarity is the ultimate authority."
+                    </p>
+<div class="flex -space-x-3 pt-2">
+<div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200">
+<img class="w-full h-full rounded-full object-cover" data-alt="professional headshot of a lawyer in a suit with a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhFs8HaIn4oPSnXCDzmP6O0mpMgCLCeCQ4AKtwp5Tsp2ZZ66W34nGzFZmdC0ERO3o2dEGBhHogjvgmG44PDQs9pn040_py_xhZAUmtr4nWkvm73FockAHO-225b_wUpRnMBXIwXYbtskAxC5Cob3ehsnTnL8MqiqLU5MK2TLQiv8G_4GbL6Dgg7Heb_CgRV1t_v-qjS5ROwOfYrwoq5r2gzZxCzc84AywGvkgRjLC95jc4uLwgaKfXi61iB1kGjn0SkHAkRb9CNd0"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200">
+<img class="w-full h-full rounded-full object-cover" data-alt="professional headshot of a female legal consultant with a bright smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb_lct0WxY4DhgsKWtnb8RTPVXnOqCugUiWs_RPFYxkyaCK1sQ0-4lcKUrRw20j9cQNNMdWtfk2aEw-whlPYJ5XlR3RL4zKfT493Dgql7sXeKPbo40Iecpu_Q_s9KoDyLMwMFbLz6HepRcBOlSEF_xmVKChjhWNT_qhlYpjMD1GZpzuG1Dp5ToSQlAFLrecJbAJEXIALVYPPtF3sqYfC7h3S1jD1ZcrYR3uPCOx9QusQU-2APiQA1ya-c7Js4vDe--c86uE2wYEFU"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200">
+<img class="w-full h-full rounded-full object-cover" data-alt="professional headshot of a senior judge in casual attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiKciYf1RHKw8Jf9vYHCtljwfk7OMFIb_1tvrClYWwaW72BX0rIzhp3VU8j9M45e-2EWvQB9acbHylbIfStRM88sOQKQB73bwEQeokPKLQUw1y4MtcFrql9ceXKEfmGlqd89ybRAFi2r_JCbJ9xDafqbVCnlT3bAhj3hiZlOuVeQ735GpcZZqGZozAzDlRHgOhEdGF7z-Jpd3_MTbA1FmGbZYEiIT4uY6eh_5tKR-B02kMkEN3Qa9Fs-0SD9uE8L3rBPDkBcWScFM"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-primary-container flex items-center justify-center text-[10px] text-white font-bold">
+                            +12k
+                        </div>
+</div>
+</div>
+</div>
+<!-- Atmospheric Glows -->
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary-container/20 blur-[120px] rounded-full"></div>
+<div class="absolute -top-24 -left-24 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full"></div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-8 bg-transparent">
+<div class="flex flex-col md:flex-row justify-between items-center px-10 max-w-7xl mx-auto gap-4">
+<p class="text-[#0e1c31]/40 dark:text-[#f7f9fb]/40 font-body text-sm leading-[1.4]">
+                © 2024 SueTogether. The Digital Jurist OS.
+            </p>
+<nav class="flex gap-8">
+<a class="text-[#0e1c31]/40 dark:text-[#f7f9fb]/40 font-body text-sm hover:text-[#0e1c31] transition-colors" href="#">Terms of Service</a>
+<a class="text-[#0e1c31]/40 dark:text-[#f7f9fb]/40 font-body text-sm hover:text-[#0e1c31] transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#0e1c31]/40 dark:text-[#f7f9fb]/40 font-body text-sm hover:text-[#0e1c31] transition-colors" href="#">Help Center</a>
+</nav>
+</div>
+</footer>
+</body></html>

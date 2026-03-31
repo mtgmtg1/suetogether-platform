@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SueTogether | Analytics &amp; Settlements</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-variant": "#e0e3e5",
+                "on-surface-variant": "#44474d",
+                "on-secondary-fixed-variant": "#004f58",
+                "error-container": "#ffdad6",
+                "on-primary-fixed-variant": "#3a475e",
+                "surface-tint": "#525f77",
+                "outline-variant": "#c5c6cd",
+                "primary-fixed": "#d6e3ff",
+                "primary-container": "#0e1c31",
+                "primary": "#000000",
+                "tertiary": "#000000",
+                "on-primary": "#ffffff",
+                "surface-container": "#eceef0",
+                "inverse-primary": "#bac7e3",
+                "surface-container-low": "#f2f4f6",
+                "on-primary-container": "#77849e",
+                "on-secondary-container": "#00616d",
+                "on-error": "#ffffff",
+                "on-secondary": "#ffffff",
+                "background": "#f7f9fb",
+                "surface-container-lowest": "#ffffff",
+                "secondary-container": "#00e3fd",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed": "#ffddb8",
+                "surface-bright": "#f7f9fb",
+                "secondary-fixed-dim": "#00daf3",
+                "surface-container-high": "#e6e8ea",
+                "secondary-fixed": "#9cf0ff",
+                "on-tertiary-fixed-variant": "#5b4224",
+                "on-background": "#191c1e",
+                "inverse-surface": "#2d3133",
+                "tertiary-fixed-dim": "#e4c099",
+                "surface-container-highest": "#e0e3e5",
+                "surface": "#f7f9fb",
+                "on-primary-fixed": "#0e1c31",
+                "error": "#ba1a1a",
+                "surface-dim": "#d8dadc",
+                "secondary": "#006875",
+                "on-error-container": "#93000a",
+                "outline": "#75777d",
+                "primary-fixed-dim": "#bac7e3",
+                "inverse-on-surface": "#eff1f3",
+                "on-tertiary-fixed": "#2a1801",
+                "on-tertiary-container": "#9d7e5b",
+                "on-surface": "#191c1e",
+                "tertiary-fixed-dim": "#e4c099",
+                "on-secondary-fixed": "#001f24"
+              },
+              fontFamily: {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+<style>
+        .glass-panel {
+            background: rgba(11, 25, 46, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .progress-ring-glow {
+            filter: drop-shadow(0 0 8px rgba(0, 227, 253, 0.4));
+        }
+        input[type='range'] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type='range']::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: #1a2c47;
+            border-radius: 9999px;
+        }
+        input[type='range']::-webkit-slider-thumb {
+            height: 18px;
+            width: 18px;
+            border-radius: 9999px;
+            background: #00e3fd;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -6px;
+            box-shadow: 0 0 10px rgba(0, 227, 253, 0.5);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0B192E]/60 backdrop-blur-xl dark:bg-[#0B192E]/60 shadow-[0_24px_48px_-12px_rgba(11,25,46,0.08)] flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container flex items-center justify-center">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="professional male portrait with minimalist lighting and corporate attire on a clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1-fbVqHpTYP5ZW_M7IhevBzoJmNVwIhCFIzdzBLgzfW6cLXvASptRGqSxiUuF2YJrxzfn0fQX6kh5sD7l_gbvsUhXH5P_98on9qTmGlnZu50yjIAuNnUX88uHewHc_BOZH6pdAFOUDPzQ1jWdDtbRZcspWUQM2U-WmKMWNqTVQWPzK21k_gcE32lhnLnESWtehZbEJKtRLqr_-6XBRHAW-mCygHtJ4GGf-Z4PNJwU9ek2jz5aDdgIN3-PQOiODjFhwf5D34eE8Aw"/>
+</div>
+<h1 class="font-['Manrope'] font-bold tracking-tight text-xl text-[#f7f9fb]">Analytics</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex items-center gap-6">
+<a class="text-slate-400 font-label text-sm tracking-widest uppercase hover:text-[#00e3fd] transition-all" href="#">Cases</a>
+<a class="text-[#00e3fd] font-label text-sm tracking-widest uppercase flex items-center gap-1" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-[#00e3fd]"></span>
+                    Analytics
+                </a>
+<a class="text-slate-400 font-label text-sm tracking-widest uppercase hover:text-[#00e3fd] transition-all" href="#">Settlements</a>
+<a class="text-slate-400 font-label text-sm tracking-widest uppercase hover:text-[#00e3fd] transition-all" href="#">Settings</a>
+</nav>
+<div class="h-8 w-[1px] bg-white/10"></div>
+<span class="font-headline font-extrabold text-[#f7f9fb] tracking-tighter text-xl">SueTogether</span>
+</div>
+<button class="md:hidden text-[#f7f9fb] p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto space-y-10">
+<!-- Dashboard Header Hero -->
+<section class="flex flex-col md:flex-row justify-between items-end gap-6">
+<div>
+<p class="font-label text-secondary uppercase tracking-[0.2em] font-semibold text-xs mb-2">Legal Intelligence Terminal</p>
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-primary-container tracking-tight">Portfolio Performance</h2>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 rounded-xl bg-surface-container-highest text-on-primary-container font-semibold flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                    Export Report
+                </button>
+<button class="px-6 py-3 rounded-xl bg-gradient-to-br from-secondary to-secondary-fixed-dim text-white font-semibold flex items-center gap-2 shadow-lg shadow-secondary/20 hover:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-lg">add</span>
+                    New Analysis
+                </button>
+</div>
+</section>
+<!-- Main Analytics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Settlement Trends Chart (Large Module) -->
+<div class="md:col-span-8 bg-[#0B192E] rounded-[2rem] p-8 relative overflow-hidden shadow-2xl flex flex-col justify-between h-[480px]">
+<div class="relative z-10">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-2xl font-bold text-white mb-1">Expected Settlement Analytics</h3>
+<p class="text-slate-400 text-sm">Value trends based on Liability Confidence 2.0</p>
+</div>
+<div class="flex gap-2">
+<span class="bg-white/10 px-3 py-1 rounded-full text-[10px] font-bold text-[#00e3fd] uppercase tracking-wider">Live Sync</span>
+</div>
+</div>
+<div class="mt-12 flex items-baseline gap-4">
+<span class="text-5xl font-extrabold text-[#00e3fd] tracking-tighter">$1,482,000</span>
+<span class="text-secondary-fixed-dim font-bold flex items-center gap-1 text-sm bg-secondary/20 px-2 py-0.5 rounded-lg">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                            +12.4%
+                        </span>
+</div>
+</div>
+<!-- Decorative Chart Placeholder with Tonal Glows -->
+<div class="absolute bottom-0 left-0 w-full h-1/2 flex items-end">
+<div class="w-full h-full bg-gradient-to-t from-secondary/10 to-transparent"></div>
+<svg class="absolute bottom-0 w-full h-48 overflow-visible" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="chartLine" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00e3fd"></stop>
+<stop offset="100%" stop-color="#006875" stop-opacity="0"></stop>
+</lineargradient>
+<filter id="glow">
+<fegaussianblur result="coloredBlur" stddeviation="4"></fegaussianblur>
+<femerge>
+<femergenode in="coloredBlur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<path d="M0 160 Q 100 140 200 160 T 400 80 T 600 120 T 800 40 L 800 200 L 0 200 Z" fill="url(#chartLine)" fill-opacity="0.2"></path>
+<path d="M0 160 Q 100 140 200 160 T 400 80 T 600 120 T 800 40" fill="none" filter="url(#glow)" stroke="#00e3fd" stroke-width="4"></path>
+</svg>
+</div>
+</div>
+<!-- Success Probability Gauge -->
+<div class="md:col-span-4 bg-surface-container-low rounded-[2rem] p-8 flex flex-col items-center justify-center text-center shadow-sm">
+<h3 class="font-headline text-lg font-bold text-on-surface-variant mb-8">Case Success Probability</h3>
+<div class="relative flex items-center justify-center w-56 h-56">
+<!-- Progress Ring -->
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container-high" cx="112" cy="112" fill="transparent" r="90" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-secondary progress-ring-glow" cx="112" cy="112" fill="transparent" r="90" stroke="currentColor" stroke-dasharray="565" stroke-dashoffset="85" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-5xl font-black text-primary-container font-headline">85%</span>
+<span class="text-xs font-bold text-secondary uppercase tracking-widest mt-1">Highly Probable</span>
+</div>
+</div>
+<div class="mt-10 grid grid-cols-2 gap-4 w-full">
+<div class="bg-surface-container-lowest p-4 rounded-2xl">
+<span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Precedent</span>
+<span class="text-lg font-bold text-primary-container">92%</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl">
+<span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Defense Strength</span>
+<span class="text-lg font-bold text-primary-container text-error">Low</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mt-8">
+<!-- Settlement Calculator (Glassmorphism) -->
+<div class="md:col-span-7 relative rounded-[2rem] overflow-hidden min-h-[400px]">
+<img alt="Legal Setting" class="absolute inset-0 w-full h-full object-cover" data-alt="architectural interior of a modern law firm with glass walls reflecting city lights and minimalist furniture at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHBg_sz87i6mdhZxPX9x8r9FhdJFz8FMo570hIzgqUSi-M5fsbPqEdJ8BIe5goQLQxYaMZCE0OUNStUhmDSdhDvn1Wqnktm6ADla1S9e1jURvxeE848dsL-5vSRWLcZM9OYBsWJ9_1WQQu7teDl3fWZTxexxQ41gcg2gKGLgbLUkZf2r8ooZgXnw5rCCOj-r39IWPW2-aQV84E-e054pQQex5nJdOTLhi_0_ItJnnGChmj5VLO-0spL34qDTMVR186ZEsG22yF-no"/>
+<div class="absolute inset-0 glass-panel p-10 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-[#00e3fd]">calculate</span>
+<h3 class="font-headline text-2xl font-bold text-white">Settlement Calculator</h3>
+</div>
+<div class="space-y-8 max-w-md">
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="text-slate-300 font-medium text-sm">Liability Confidence</label>
+<span class="text-[#00e3fd] font-bold">78%</span>
+</div>
+<input max="100" min="0" type="range" value="78"/>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="text-slate-300 font-medium text-sm">Estimated Damages</label>
+<span class="text-[#00e3fd] font-bold">$2.5M</span>
+</div>
+<input max="1000" min="0" type="range" value="250"/>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-white/10 flex justify-between items-center">
+<div>
+<span class="text-slate-400 text-xs uppercase font-bold tracking-[0.1em]">Calculated Value</span>
+<div class="text-5xl font-black text-[#00e3fd] tracking-tighter">$1,950,000</div>
+</div>
+<button class="bg-white/10 hover:bg-white/20 p-4 rounded-full transition-all group">
+<span class="material-symbols-outlined text-white group-active:scale-90 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Recent Activity Widget -->
+<div class="md:col-span-5 bg-surface-container-low rounded-[2rem] p-8 flex flex-col shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline text-lg font-bold text-primary-container">Key Activity</h3>
+<button class="text-secondary font-bold text-xs uppercase tracking-wider">View All</button>
+</div>
+<div class="space-y-4">
+<!-- Activity Item -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex gap-4 hover:translate-x-1 transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container">gavel</span>
+</div>
+<div>
+<h4 class="font-bold text-primary-container text-sm">Offer Received: Case #8821</h4>
+<p class="text-on-surface-variant text-xs mt-1">Defense counsel submitted a $450k settlement offer for review.</p>
+<span class="text-[10px] font-medium text-slate-400 mt-2 block">2 HOURS AGO</span>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex gap-4 hover:translate-x-1 transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">description</span>
+</div>
+<div>
+<h4 class="font-bold text-primary-container text-sm">Liability Matrix Updated</h4>
+<p class="text-on-surface-variant text-xs mt-1">New medical expert testimony increased confidence by 12%.</p>
+<span class="text-[10px] font-medium text-slate-400 mt-2 block">YESTERDAY</span>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex gap-4 hover:translate-x-1 transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-xl bg-error-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-error-container">warning</span>
+</div>
+<div>
+<h4 class="font-bold text-primary-container text-sm">Deadline Approaching</h4>
+<p class="text-on-surface-variant text-xs mt-1">Discovery window closes in 48 hours for Johnson v. Acme Corp.</p>
+<span class="text-[10px] font-medium text-slate-400 mt-2 block">2 DAYS AGO</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-[#0B192E]/80 backdrop-blur-2xl dark:bg-[#0B192E]/80 z-50 rounded-t-3xl shadow-[0_-8px_24px_rgba(11,25,46,0.15)]">
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Cases</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#006875] text-[#00e3fd] rounded-2xl px-5 py-2 shadow-[0_0_15px_rgba(0,227,253,0.3)] scale-90 duration-150 ease-out" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Analytics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Settlements</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

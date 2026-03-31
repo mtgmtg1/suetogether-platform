@@ -1,0 +1,39 @@
+name: Docker Build Validation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/api/**'
+      - 'package.json'
+      - 'turbo.json'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'apps/api/**'
+      - 'package.json'
+      - 'turbo.json'
+
+jobs:
+  build-docker-image:
+    name: Verify Backend Docker Build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        
+      - name: Build Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./apps/api/Dockerfile
+          push: false # Only test the build, do not push to registry during PR validation
+          tags: suetogether/api:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

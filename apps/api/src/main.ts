@@ -8,9 +8,24 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // CORS 설정
+  // CORS 설정 (로컬 개발 & Vercel 배포 도메인 대응)
   app.enableCors({
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+      if (!origin) return callback(null, true);
+      // Vercel Preview URL (*.vercel.app), Vercel Production, Localhost 등 환경 모두 허용
+      const allowedOrigins = [
+        /^http:\/\/localhost:\d+$/,
+        /^https:\/\/.*\.vercel\.app$/, // Vercel Preview/Production URL
+        /^https:\/\/suetogether\.com$/,  // 향후 사용될 프로덕션 도메인
+      ];
+
+      const isAllowed = allowedOrigins.some((regex) => regex.test(origin));
+      if (isAllowed) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   });
 

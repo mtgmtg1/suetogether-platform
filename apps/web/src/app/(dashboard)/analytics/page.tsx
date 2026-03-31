@@ -1,153 +1,225 @@
-// [Flow: Dashboard Load -> Render Map Placeholder -> Overlay Heatmap Data -> Render Detail Panel]
-"use client";
+// [Flow: Component initialized -> Render static UI -> Output layout]
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Filter, MapPin, Search, Layers, TrendingUp } from "lucide-react";
-
-export default function AnalyticsGISPage() {
-  const regions = [
-    { name: "서울특별시 강남구", count: 342, severity: "high", change: "+12%" },
-    { name: "경기도 성남시 분당구", count: 218, severity: "high", change: "+5%" },
-    { name: "인천광역시 연수구", count: 156, severity: "medium", change: "-2%" },
-    { name: "부산광역시 해운대구", count: 94, severity: "low", change: "+0%" },
-    { name: "대구광역시 수성구", count: 87, severity: "low", change: "+8%" },
-  ];
-
+export default function AnalyticsPage() {
   return (
-    <div className="space-y-6 pt-4 max-w-7xl mx-auto w-full flex flex-col h-[calc(100vh-80px)]">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shrink-0">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-white">공간데이터 분석 (GIS)</h1>
-          <p className="text-sm text-zinc-400 mt-1">
-            가습기 살균제 집단소송 원고들의 지역적 분포 및 피해 심각도를 분석합니다.
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <div className="relative group">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
-            <input 
-              type="text" 
-              placeholder="지역구명 검색..." 
-              className="h-9 bg-white/5 border border-white/10 rounded-full pl-9 pr-4 text-sm text-zinc-200 placeholder:text-zinc-500 focus:outline-none focus:ring-1 focus:ring-blue-500/50"
-            />
-          </div>
-          <Button variant="outline" className="border-white/10 text-white bg-white/5 hover:bg-white/10">
-            <Filter className="w-4 h-4 mr-2" />
-            필터
-          </Button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-[#0B192E] text-white font-body selection:bg-cyan-400 selection:text-slate-900">
+      {/* Generated from Analytics_stitch.html */}
+      
+{/*  TopAppBar  */}
+<header className="fixed top-0 w-full z-50 bg-[#0B192E]/60 backdrop-blur-xl dark:bg-[#0B192E]/60 shadow-[0_24px_48px_-12px_rgba(11,25,46,0.08)] flex items-center justify-between px-6 py-4 w-full">
+<div className="flex items-center gap-4">
+<div className="w-10 h-10 rounded-full overflow-hidden bg-primary-container flex items-center justify-center">
+<img alt="User Profile" className="w-full h-full object-cover" data-alt="professional male portrait with minimalist lighting and corporate attire on a clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1-fbVqHpTYP5ZW_M7IhevBzoJmNVwIhCFIzdzBLgzfW6cLXvASptRGqSxiUuF2YJrxzfn0fQX6kh5sD7l_gbvsUhXH5P_98on9qTmGlnZu50yjIAuNnUX88uHewHc_BOZH6pdAFOUDPzQ1jWdDtbRZcspWUQM2U-WmKMWNqTVQWPzK21k_gcE32lhnLnESWtehZbEJKtRLqr_-6XBRHAW-mCygHtJ4GGf-Z4PNJwU9ek2jz5aDdgIN3-PQOiODjFhwf5D34eE8Aw"/>
+</div>
+<h1 className="font-['Manrope'] font-bold tracking-tight text-xl text-[#f7f9fb]">Analytics</h1>
+</div>
+<div className="hidden md:flex items-center gap-8">
+<nav className="flex items-center gap-6">
+<a className="text-slate-400 font-label text-sm tracking-widest uppercase hover:text-[#00e3fd] transition-all" href="#">Cases</a>
+<a className="text-[#00e3fd] font-label text-sm tracking-widest uppercase flex items-center gap-1" href="#">
+<span className="w-1.5 h-1.5 rounded-full bg-[#00e3fd]"></span>
+                    Analytics
+                </a>
+<a className="text-slate-400 font-label text-sm tracking-widest uppercase hover:text-[#00e3fd] transition-all" href="#">Settlements</a>
+<a className="text-slate-400 font-label text-sm tracking-widest uppercase hover:text-[#00e3fd] transition-all" href="#">Settings</a>
+</nav>
+<div className="h-8 w-[1px] bg-white/10"></div>
+<span className="font-headline font-extrabold text-[#f7f9fb] tracking-tighter text-xl">SueTogether</span>
+</div>
+<button className="md:hidden text-[#f7f9fb] p-2">
+<span className="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main className="pt-24 pb-32 px-6 max-w-7xl mx-auto space-y-10">
+{/*  Dashboard Header Hero  */}
+<section className="flex flex-col md:flex-row justify-between items-end gap-6">
+<div>
+<p className="font-label text-secondary uppercase tracking-[0.2em] font-semibold text-xs mb-2">Legal Intelligence Terminal</p>
+<h2 className="font-headline text-4xl md:text-5xl font-extrabold text-primary-container tracking-tight">Portfolio Performance</h2>
+</div>
+<div className="flex gap-4">
+<button className="px-6 py-3 rounded-xl bg-surface-container-highest text-on-primary-container font-semibold flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span className="material-symbols-outlined text-lg">download</span>
+                    Export Report
+                </button>
+<button className="px-6 py-3 rounded-xl bg-gradient-to-br from-secondary to-secondary-fixed-dim text-white font-semibold flex items-center gap-2 shadow-lg shadow-secondary/20 hover:scale-[0.98] transition-transform">
+<span className="material-symbols-outlined text-lg">add</span>
+                    New Analysis
+                </button>
+</div>
+</section>
+{/*  Main Analytics Bento Grid  */}
+<div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+{/*  Settlement Trends Chart (Large Module)  */}
+<div className="md:col-span-8 bg-[#0B192E] rounded-[2rem] p-8 relative overflow-hidden shadow-2xl flex flex-col justify-between h-[480px]">
+<div className="relative z-10">
+<div className="flex justify-between items-start">
+<div>
+<h3 className="font-headline text-2xl font-bold text-white mb-1">Expected Settlement Analytics</h3>
+<p className="text-slate-400 text-sm">Value trends based on Liability Confidence 2.0</p>
+</div>
+<div className="flex gap-2">
+<span className="bg-white/10 px-3 py-1 rounded-full text-[10px] font-bold text-[#00e3fd] uppercase tracking-wider">Live Sync</span>
+</div>
+</div>
+<div className="mt-12 flex items-baseline gap-4">
+<span className="text-5xl font-extrabold text-[#00e3fd] tracking-tighter">$1,482,000</span>
+<span className="text-secondary-fixed-dim font-bold flex items-center gap-1 text-sm bg-secondary/20 px-2 py-0.5 rounded-lg">
+<span className="material-symbols-outlined text-xs">trending_up</span>
+                            +12.4%
+                        </span>
+</div>
+</div>
+{/*  Decorative Chart Placeholder with Tonal Glows  */}
+<div className="absolute bottom-0 left-0 w-full h-1/2 flex items-end">
+<div className="w-full h-full bg-gradient-to-t from-secondary/10 to-transparent"></div>
+<svg className="absolute bottom-0 w-full h-48 overflow-visible" viewBox="0 0 800 200">
+<defs>
+<linearGradient id="chartLine" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00e3fd"></stop>
+<stop offset="100%" stop-color="#006875" stop-opacity="0"></stop>
+</linearGradient>
+<filter id="glow">
+<feGaussianBlur result="coloredBlur" stdDeviation="4"></feGaussianBlur>
+<feMerge>
+<feMergeNode in="coloredBlur"></feMergeNode>
+<feMergeNode in="SourceGraphic"></feMergeNode>
+</feMerge>
+</filter>
+</defs>
+<path d="M0 160 Q 100 140 200 160 T 400 80 T 600 120 T 800 40 L 800 200 L 0 200 Z" fill="url(#chartLine)" fill-opacity="0.2"></path>
+<path d="M0 160 Q 100 140 200 160 T 400 80 T 600 120 T 800 40" fill="none" filter="url(#glow)" stroke="#00e3fd" strokeWidth="4"></path>
+</svg>
+</div>
+</div>
+{/*  Success Probability Gauge  */}
+<div className="md:col-span-4 bg-surface-container-low rounded-[2rem] p-8 flex flex-col items-center justify-center text-center shadow-sm">
+<h3 className="font-headline text-lg font-bold text-on-surface-variant mb-8">Case Success Probability</h3>
+<div className="relative flex items-center justify-center w-56 h-56">
+{/*  Progress Ring  */}
+<svg className="w-full h-full -rotate-90">
+<circle className="text-surface-container-high" cx="112" cy="112" fill="transparent" r="90" stroke="currentColor" strokeWidth="12"></circle>
+<circle className="text-secondary progress-ring-glow" cx="112" cy="112" fill="transparent" r="90" stroke="currentColor" strokeDasharray="565" strokeDashoffset="85" strokeWidth="12"></circle>
+</svg>
+<div className="absolute inset-0 flex flex-col items-center justify-center">
+<span className="text-5xl font-black text-primary-container font-headline">85%</span>
+<span className="text-xs font-bold text-secondary uppercase tracking-widest mt-1">Highly Probable</span>
+</div>
+</div>
+<div className="mt-10 grid grid-cols-2 gap-4 w-full">
+<div className="bg-surface-container-lowest p-4 rounded-2xl">
+<span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Precedent</span>
+<span className="text-lg font-bold text-primary-container">92%</span>
+</div>
+<div className="bg-surface-container-lowest p-4 rounded-2xl">
+<span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Defense Strength</span>
+<span className="text-lg font-bold text-primary-container text-error">Low</span>
+</div>
+</div>
+</div>
+</div>
+<div className="grid grid-cols-1 md:grid-cols-12 gap-8 mt-8">
+{/*  Settlement Calculator (Glassmorphism)  */}
+<div className="md:col-span-7 relative rounded-[2rem] overflow-hidden min-h-[400px]">
+<img alt="Legal Setting" className="absolute inset-0 w-full h-full object-cover" data-alt="architectural interior of a modern law firm with glass walls reflecting city lights and minimalist furniture at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHBg_sz87i6mdhZxPX9x8r9FhdJFz8FMo570hIzgqUSi-M5fsbPqEdJ8BIe5goQLQxYaMZCE0OUNStUhmDSdhDvn1Wqnktm6ADla1S9e1jURvxeE848dsL-5vSRWLcZM9OYBsWJ9_1WQQu7teDl3fWZTxexxQ41gcg2gKGLgbLUkZf2r8ooZgXnw5rCCOj-r39IWPW2-aQV84E-e054pQQex5nJdOTLhi_0_ItJnnGChmj5VLO-0spL34qDTMVR186ZEsG22yF-no"/>
+<div className="absolute inset-0 glass-panel p-10 flex flex-col justify-between">
+<div>
+<div className="flex items-center gap-3 mb-6">
+<span className="material-symbols-outlined text-[#00e3fd]">calculate</span>
+<h3 className="font-headline text-2xl font-bold text-white">Settlement Calculator</h3>
+</div>
+<div className="space-y-8 max-w-md">
+<div className="space-y-4">
+<div className="flex justify-between items-center">
+<label className="text-slate-300 font-medium text-sm">Liability Confidence</label>
+<span className="text-[#00e3fd] font-bold">78%</span>
+</div>
+<input max="100" min="0" type="range" value="78"/>
+</div>
+<div className="space-y-4">
+<div className="flex justify-between items-center">
+<label className="text-slate-300 font-medium text-sm">Estimated Damages</label>
+<span className="text-[#00e3fd] font-bold">$2.5M</span>
+</div>
+<input max="1000" min="0" type="range" value="250"/>
+</div>
+</div>
+</div>
+<div className="mt-8 pt-8 border-t border-white/10 flex justify-between items-center">
+<div>
+<span className="text-slate-400 text-xs uppercase font-bold tracking-[0.1em]">Calculated Value</span>
+<div className="text-5xl font-black text-[#00e3fd] tracking-tighter">$1,950,000</div>
+</div>
+<button className="bg-white/10 hover:bg-white/20 p-4 rounded-full transition-all group">
+<span className="material-symbols-outlined text-white group-active:scale-90 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+{/*  Recent Activity Widget  */}
+<div className="md:col-span-5 bg-surface-container-low rounded-[2rem] p-8 flex flex-col shadow-sm">
+<div className="flex justify-between items-center mb-8">
+<h3 className="font-headline text-lg font-bold text-primary-container">Key Activity</h3>
+<button className="text-secondary font-bold text-xs uppercase tracking-wider">View All</button>
+</div>
+<div className="space-y-4">
+{/*  Activity Item  */}
+<div className="bg-surface-container-lowest p-5 rounded-2xl flex gap-4 hover:translate-x-1 transition-transform cursor-pointer">
+<div className="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span className="material-symbols-outlined text-on-secondary-container">gavel</span>
+</div>
+<div>
+<h4 className="font-bold text-primary-container text-sm">Offer Received: Case #8821</h4>
+<p className="text-on-surface-variant text-xs mt-1">Defense counsel submitted a $450k settlement offer for review.</p>
+<span className="text-[10px] font-medium text-slate-400 mt-2 block">2 HOURS AGO</span>
+</div>
+</div>
+{/*  Activity Item  */}
+<div className="bg-surface-container-lowest p-5 rounded-2xl flex gap-4 hover:translate-x-1 transition-transform cursor-pointer">
+<div className="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center flex-shrink-0">
+<span className="material-symbols-outlined text-on-surface-variant">description</span>
+</div>
+<div>
+<h4 className="font-bold text-primary-container text-sm">Liability Matrix Updated</h4>
+<p className="text-on-surface-variant text-xs mt-1">New medical expert testimony increased confidence by 12%.</p>
+<span className="text-[10px] font-medium text-slate-400 mt-2 block">YESTERDAY</span>
+</div>
+</div>
+{/*  Activity Item  */}
+<div className="bg-surface-container-lowest p-5 rounded-2xl flex gap-4 hover:translate-x-1 transition-transform cursor-pointer">
+<div className="w-12 h-12 rounded-xl bg-error-container flex items-center justify-center flex-shrink-0">
+<span className="material-symbols-outlined text-on-error-container">warning</span>
+</div>
+<div>
+<h4 className="font-bold text-primary-container text-sm">Deadline Approaching</h4>
+<p className="text-on-surface-variant text-xs mt-1">Discovery window closes in 48 hours for Johnson v. Acme Corp.</p>
+<span className="text-[10px] font-medium text-slate-400 mt-2 block">2 DAYS AGO</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+{/*  BottomNavBar (Mobile Only)  */}
+<nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-[#0B192E]/80 backdrop-blur-2xl dark:bg-[#0B192E]/80 z-50 rounded-t-3xl shadow-[0_-8px_24px_rgba(11,25,46,0.15)]">
+<a className="flex flex-col items-center justify-center text-slate-400 px-5 py-2" href="#">
+<span className="material-symbols-outlined">gavel</span>
+<span className="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Cases</span>
+</a>
+<a className="flex flex-col items-center justify-center bg-[#006875] text-[#00e3fd] rounded-2xl px-5 py-2 shadow-[0_0_15px_rgba(0,227,253,0.3)] scale-90 duration-150 ease-out" href="#">
+<span className="material-symbols-outlined">monitoring</span>
+<span className="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Analytics</span>
+</a>
+<a className="flex flex-col items-center justify-center text-slate-400 px-5 py-2" href="#">
+<span className="material-symbols-outlined">payments</span>
+<span className="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Settlements</span>
+</a>
+<a className="flex flex-col items-center justify-center text-slate-400 px-5 py-2" href="#">
+<span className="material-symbols-outlined">settings</span>
+<span className="font-['Inter'] text-[10px] font-medium tracking-[0.05rem] uppercase mt-1">Settings</span>
+</a>
+</nav>
 
-      {/* Main Content Area */}
-      <div className="flex flex-col lg:flex-row gap-6 flex-1 min-h-0">
-        
-        {/* Left: Interactive Map Viewer */}
-        <Card className="flex-1 border-white/10 bg-black/40 backdrop-blur-xl relative overflow-hidden flex flex-col">
-          <div className="absolute top-4 right-4 z-10 flex flex-col gap-2">
-            <Button variant="outline" size="icon" className="bg-black/50 border-white/10 text-white hover:bg-white/10 backdrop-blur-md">
-              <Layers className="w-4 h-4" />
-            </Button>
-            <Button variant="outline" size="icon" className="bg-black/50 border-white/10 text-white hover:bg-white/10 backdrop-blur-md">
-              <MapPin className="w-4 h-4" />
-            </Button>
-          </div>
-          
-          <div className="absolute bottom-4 left-4 z-10 bg-black/50 backdrop-blur-md border border-white/10 rounded-lg p-3 text-xs">
-            <div className="font-medium text-white mb-2">밀도 범례</div>
-            <div className="flex gap-1 items-center">
-              <span className="text-zinc-400 mr-2">낮음</span>
-              <div className="w-4 h-4 bg-emerald-500/50 rounded-sm" />
-              <div className="w-4 h-4 bg-amber-500/50 rounded-sm" />
-              <div className="w-4 h-4 bg-rose-500/50 rounded-sm" />
-              <div className="w-4 h-4 bg-purple-500/50 rounded-sm" />
-              <span className="text-zinc-400 ml-2">매우 높음</span>
-            </div>
-          </div>
-
-          <CardContent className="flex-1 p-0 m-0 h-full relative">
-            {/* Map Placeholder */}
-            <div className="absolute inset-0 bg-[#0a0f18] opacity-80" style={{
-              backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 60%), linear-gradient(#1e293b 1px, transparent 1px), linear-gradient(90deg, #1e293b 1px, transparent 1px)',
-              backgroundSize: '100% 100%, 20px 20px, 20px 20px'
-            }} />
-            
-            {/* Fake Heatmap Nodes */}
-            <div className="absolute top-[35%] left-[60%] w-32 h-32 bg-rose-500/30 blur-2xl rounded-full" />
-            <div className="absolute top-[40%] left-[58%] w-8 h-8 bg-rose-500/80 rounded-full animate-pulse border-2 border-white/20 shadow-[0_0_15px_rgba(244,63,94,0.5)] flex items-center justify-center">
-              <span className="text-[10px] font-bold text-white">342</span>
-            </div>
-
-            <div className="absolute top-[45%] left-[63%] w-24 h-24 bg-amber-500/30 blur-2xl rounded-full" />
-            <div className="absolute top-[47%] left-[65%] w-6 h-6 bg-amber-500/80 rounded-full border border-white/20 flex items-center justify-center">
-              <span className="text-[9px] font-bold text-white">218</span>
-            </div>
-
-            <div className="absolute top-[20%] left-[30%] w-20 h-20 bg-emerald-500/20 blur-xl rounded-full" />
-            <div className="absolute top-[22%] left-[32%] w-5 h-5 bg-emerald-500/60 rounded-full border border-white/20" />
-            
-            {/* Placeholder Text */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <span className="text-zinc-600 font-medium tracking-widest text-lg opacity-30">대화형 GIS 지도 렌더링 영역</span>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Right: Analytics Panel */}
-        <div className="w-full lg:w-96 flex flex-col gap-6 shrink-0 overflow-y-auto pr-2">
-          {/* Top States */}
-          <Card className="border-white/10 bg-black/40 backdrop-blur-xl shrink-0">
-            <CardHeader className="pb-3 border-b border-white/5">
-              <CardTitle className="text-sm font-medium">핫스팟 (밀집 지역)</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-4 p-0">
-              <ul className="divide-y divide-white/5">
-                {regions.map((region, idx) => (
-                  <li key={idx} className="p-4 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer">
-                    <div>
-                      <h4 className="text-sm font-medium text-zinc-200">{region.name}</h4>
-                      <p className="text-xs text-zinc-500 mt-1 flex items-center gap-1">
-                        <MapPin className="w-3 h-3" />
-                        원고 {region.count}명
-                      </p>
-                    </div>
-                    <div className="flex flex-col items-end gap-1">
-                      <span className={`text-[10px] px-1.5 py-0.5 rounded font-medium ${
-                        region.severity === "high" ? "bg-rose-500/10 text-rose-400 border border-rose-500/20" :
-                        region.severity === "medium" ? "bg-amber-500/10 text-amber-400 border border-amber-500/20" :
-                        "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-                      }`}>
-                        위험도 {region.severity === "high" ? "상" : region.severity === "medium" ? "중" : "하"}
-                      </span>
-                      <span className={`text-xs font-medium flex items-center ${
-                        region.change.startsWith("+") && region.change !== "+0%" ? "text-rose-400" :
-                        region.change.startsWith("-") ? "text-blue-400" : "text-zinc-500"
-                      }`}>
-                        {region.change !== "+0%" && <TrendingUp className="w-3 h-3 mr-0.5" />}
-                        {region.change}
-                      </span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          {/* Demographic summary */}
-          <Card className="border-white/10 bg-black/40 backdrop-blur-xl shrink-0">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium">주요 클러스터 분석 개요</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-zinc-400 leading-relaxed">
-                서울/경기 남부 지역에 원고의 <strong className="text-white">68%</strong>가 밀집되어 있습니다. 
-                특히 강남구 및 분당구 클러스터의 경우 최근 일주일 새 접수 비율이 <strong className="text-rose-400 font-medium">12% 급증</strong>하여 우선적인 법리 검토 및 안내가 필요합니다.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
     </div>
   );
 }

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+.next/
+out/
+coverage/
+.turbo/
+.vscode/
+.DS_Store
+playwright-report/
+test-results/
