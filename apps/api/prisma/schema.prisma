@@ -1,0 +1,448 @@
+// ============================================================
+// SueTogether Platform - Prisma Schema (LOCKED)
+// Multi-tenant RLS + PII Encryption + Audit Trail
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ===========================================
+// 1. Tenant & User & RBAC
+// ===========================================
+model Tenant {
+  id            String   @id @default(cuid())
+  name          String
+  slug          String   @unique
+  plan          PlanType @default(STANDARD)
+  encryptionKey String
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  users         User[]
+  cases         Case[]
+  settlements   Settlement[]
+}
+
+model User {
+  id            String   @id @default(cuid())
+  tenantId      String
+  email         String
+  name          String
+  role          UserRole @default(STAFF)
+  passwordHash  String
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+
+  tenant        Tenant   @relation(fields: [tenantId], references: [id])
+  auditLogs     AuditLog[]
+
+  @@unique([tenantId, email])
+  @@index([tenantId])
+}
+
+// ===========================================
+// 2. Plaintiff & Identity Verification
+// ===========================================
+model Plaintiff {
+  id                  String   @id @default(cuid())
+  tenantId            String
+  caseId              String
+
+  encryptedName       Bytes
+  encryptedPhone      Bytes
+  encryptedSSN        Bytes?
+  encryptedAddress    Bytes?
+
+  identityProvider    IdentityProvider?
+  identityVerifiedAt  DateTime?
+  identityTxId        String?
+
+  intakeStatus        IntakeStatus @default(PENDING)
+  intakeData          Json?
+  qualificationScore  Float?
+
+  bankCode            String?
+  encryptedBankAccount Bytes?
+  bankAccountHolder   String?
+  bankVerifiedAt      DateTime?
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  case                Case     @relation(fields: [caseId], references: [id])
+  evidences           Evidence[]
+  settlements         SettlementDistribution[]
+
+  @@index([tenantId, caseId])
+  @@index([intakeStatus])
+}
+
+// ===========================================
+// 3. Case & Litigation Phase
+// ===========================================
+model Case {
+  id              String    @id @default(cuid())
+  tenantId        String
+  title           String
+  description     String?
+  caseType        CaseType
+  caseNumber      String?
+  courtName       String?
+  judgeName       String?
+
+  status          CaseStatus @default(DISCOVERY)
+  currentPhase    LitigationPhase @default(INTAKE)
+
+  winProbability  Float?
+  dismissalRisk   Float?
+  estimatedDuration Int?
+
+  geoCenter       Json?
+  geoRadius       Float?
+
+  filedAt         DateTime?
+  closedAt        DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  tenant          Tenant   @relation(fields: [tenantId], references: [id])
+  plaintiffs      Plaintiff[]
+  evidences       Evidence[]
+  settlements     Settlement[]
+  predictions     CasePrediction[]
+  arbitrations    MassArbitration[]
+
+  @@index([tenantId, status])
+  @@index([tenantId, caseType])
+}
+
+// ===========================================
+// 4. Evidence & VLM Verification
+// ===========================================
+model Evidence {
+  id              String   @id @default(cuid())
+  tenantId        String
+  caseId          String
+  plaintiffId     String?
+
+  fileName        String
+  fileType        FileType
+  filePath        String
+  fileSize        Int
+  mimeType        String
+
+  vlmStatus       VLMStatus @default(PENDING)
+  vlmModel        String?
+  vlmResult       Json?
+  vlmConfidence   Float?
+
+  crossValidationStatus CrossValidationStatus @default(PENDING)
+  crossValidationResult Json?
+
+  ragChunkIds     String[]
+
+  processedAt     DateTime?
+  createdAt       DateTime @default(now())
+
+  case            Case     @relation(fields: [caseId], references: [id])
+  plaintiff       Plaintiff? @relation(fields: [plaintiffId], references: [id])
+
+  @@index([tenantId, caseId])
+  @@index([vlmStatus])
+}
+
+// ===========================================
+// 5. Settlement & Firmbanking
+// ===========================================
+model Settlement {
+  id              String   @id @default(cuid())
+  tenantId        String
+  caseId          String
+
+  totalAmount     Decimal  @db.Decimal(15, 2)
+  firmFee         Decimal  @db.Decimal(15, 2)
+  taxAmount       Decimal  @db.Decimal(15, 2)
+  netAmount       Decimal  @db.Decimal(15, 2)
+
+  escrowBankCode  String
+  escrowAccount   String
+  escrowReceivedAt DateTime?
+
+  batchTransferId String?
+  batchStatus     BatchTransferStatus @default(PENDING)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  tenant          Tenant   @relation(fields: [tenantId], references: [id])
+  case            Case     @relation(fields: [caseId], references: [id])
+  distributions   SettlementDistribution[]
+
+  @@index([tenantId, caseId])
+}
+
+model SettlementDistribution {
+  id              String   @id @default(cuid())
+  tenantId        String
+  settlementId    String
+  plaintiffId     String
+
+  grossAmount     Decimal  @db.Decimal(15, 2)
+  taxDeduction    Decimal  @db.Decimal(15, 2)
+  feeDeduction    Decimal  @db.Decimal(15, 2)
+  netAmount       Decimal  @db.Decimal(15, 2)
+
+  signatureStatus SignatureStatus @default(PENDING)
+  signedAt        DateTime?
+  signatureHash   String?
+
+  transferStatus  TransferStatus @default(PENDING)
+  transferRef     String?
+  transferredAt   DateTime?
+  transferError   String?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  settlement      Settlement @relation(fields: [settlementId], references: [id])
+  plaintiff       Plaintiff  @relation(fields: [plaintiffId], references: [id])
+
+  @@index([tenantId, settlementId])
+  @@index([transferStatus])
+}
+
+// ===========================================
+// 6. Prediction & GIS
+// ===========================================
+model CasePrediction {
+  id              String   @id @default(cuid())
+  tenantId        String
+  caseId          String
+
+  modelVersion    String
+  winProbability  Float
+  dismissalRisk   Float
+  estimatedDays   Int
+  recommendAction RecommendAction
+
+  trialCostEstimate   Decimal @db.Decimal(15, 2)
+  settleCostEstimate  Decimal @db.Decimal(15, 2)
+  expectedValue       Decimal @db.Decimal(15, 2)
+
+  confidence      Float
+  factors         Json
+  createdAt       DateTime @default(now())
+
+  case            Case     @relation(fields: [caseId], references: [id])
+
+  @@index([tenantId, caseId])
+}
+
+// ===========================================
+// 7. Audit Log (Immutable)
+// ===========================================
+model AuditLog {
+  id          String   @id @default(cuid())
+  tenantId    String
+  userId      String?
+  action      AuditAction
+  resource    String
+  resourceId  String
+  oldValue    Json?
+  newValue    Json?
+  ipAddress   String?
+  userAgent   String?
+  timestamp   DateTime @default(now())
+
+  user        User?    @relation(fields: [userId], references: [id])
+
+  @@index([tenantId, timestamp])
+  @@index([resource, resourceId])
+}
+
+// ===========================================
+// 8. Medical Chronology
+// ===========================================
+model MedicalChronology {
+  id          String   @id @default(cuid())
+  tenantId    String
+  caseId      String
+  plaintiffId String
+
+  entries     Json
+  sourceLinks Json
+
+  generatedBy String
+  confidence  Float
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([tenantId, caseId, plaintiffId])
+}
+
+// ===========================================
+// 9. Mass Arbitration
+// ===========================================
+model MassArbitration {
+  id          String   @id @default(cuid())
+  tenantId    String
+  caseId      String
+
+  status      ArbitrationStatus @default(DRAFTING)
+  totalClaims Int
+
+  packagedDoc String?
+  submittedAt DateTime?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  case        Case     @relation(fields: [caseId], references: [id])
+
+  @@index([tenantId, caseId])
+}
+
+// ===========================================
+// Enums
+// ===========================================
+enum PlanType {
+  STARTER
+  STANDARD
+  ENTERPRISE
+}
+
+enum UserRole {
+  ADMIN
+  PARTNER
+  ASSOCIATE
+  PARALEGAL
+  STAFF
+}
+
+enum IdentityProvider {
+  KCB
+  NICE
+  PASS
+}
+
+enum IntakeStatus {
+  PENDING
+  IN_PROGRESS
+  QUALIFIED
+  DISQUALIFIED
+  REVIEW_NEEDED
+}
+
+enum CaseType {
+  PRODUCT_LIABILITY
+  ENVIRONMENTAL
+  SECURITIES
+  EMPLOYMENT
+  CONSUMER
+  MEDICAL
+  OTHER
+}
+
+enum CaseStatus {
+  DISCOVERY
+  ACTIVE
+  TRIAL
+  SETTLEMENT
+  CLOSED
+  DISMISSED
+}
+
+enum LitigationPhase {
+  INTAKE
+  EVIDENCE_COLLECTION
+  FILING
+  DISCOVERY
+  PRE_TRIAL
+  TRIAL
+  SETTLEMENT
+  APPEAL
+  CLOSED
+}
+
+enum FileType {
+  IMAGE
+  PDF
+  DOCUMENT
+  SPREADSHEET
+  VIDEO
+  OTHER
+}
+
+enum VLMStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  MANUAL_REVIEW
+}
+
+enum CrossValidationStatus {
+  PENDING
+  MATCHED
+  MISMATCHED
+  REVIEW_NEEDED
+}
+
+enum BatchTransferStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  PARTIAL_FAILURE
+  FAILED
+}
+
+enum SignatureStatus {
+  PENDING
+  SIGNED
+  REJECTED
+  EXPIRED
+}
+
+enum TransferStatus {
+  PENDING
+  QUEUED
+  PROCESSING
+  COMPLETED
+  FAILED
+  RETRY
+}
+
+enum RecommendAction {
+  PROCEED_TRIAL
+  SETTLE_NOW
+  NEGOTIATE
+  DISMISS
+}
+
+enum AuditAction {
+  CREATE
+  READ
+  UPDATE
+  DELETE
+  LOGIN
+  LOGOUT
+  EXPORT
+  SIGN
+  TRANSFER
+  VERIFY
+}
+
+enum ArbitrationStatus {
+  DRAFTING
+  REVIEW
+  SUBMITTED
+  ACCEPTED
+  REJECTED
+}
