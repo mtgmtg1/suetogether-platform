@@ -11,6 +11,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { AuthGuard } from '@core/auth/auth.guard';
 import { TenantGuard } from '@core/tenant/tenant.guard';
 import { CurrentTenant, CurrentUser } from '@core/decorators';
@@ -20,6 +21,8 @@ import { VerifyEvidenceDto } from '@shared/dto/evidence.dto';
 import { DocumentAIService } from './document-ai.service';
 import { VLMResultResponseDto, CrossValidationResponseDto } from './dto/document-ai.dto';
 
+@ApiTags('증거 문서 분석 (Document-AI)')
+@ApiBearerAuth()
 @Controller('evidence')
 @UseGuards(AuthGuard, TenantGuard)
 export class DocumentAIController {
@@ -31,6 +34,19 @@ export class DocumentAIController {
 
   @Post('verify')
   @UseInterceptors(FileInterceptor('file'))
+  @ApiOperation({ summary: '증거 업로드 및 VLM 분석 요청', description: '이미지 기반 증거를 S3에 업로드하고 VLM(BullMQ)에 분석을 요청합니다.' })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        file: { type: 'string', format: 'binary' },
+        caseId: { type: 'string' },
+        plaintiffId: { type: 'string' },
+      },
+    },
+  })
+  @ApiResponse({ status: 201, description: '업로드 및 분석 큐 등록 성공' })
   async verifyEvidence(
     @CurrentTenant() tenantId: string,
     @CurrentUser() userId: string,
@@ -55,6 +71,8 @@ export class DocumentAIController {
   }
 
   @Get(':id/vlm-result')
+  @ApiOperation({ summary: 'VLM 분석 결과 조회', description: '특정 증거의 VLM 추출 결과를 조회합니다.' })
+  @ApiResponse({ status: 200, type: VLMResultResponseDto })
   async getVlmResult(@CurrentTenant() tenantId: string, @Param('id') id: string) {
     const evidence = await this.prisma.evidence.findFirst({ where: { id, tenantId } });
     if (!evidence) throw new NotFoundException('Evidence not found');
@@ -66,6 +84,8 @@ export class DocumentAIController {
   }
 
   @Post(':id/cross-validate')
+  @ApiOperation({ summary: '원고 진술 및 증거 교차 검증', description: '인테이크 데이터와 VLM 추출 데이터를 대조하여 모순을 검증합니다.' })
+  @ApiResponse({ status: 201, type: CrossValidationResponseDto })
   async triggerCrossValidation(
     @CurrentTenant() tenantId: string,
     @CurrentUser() userId: string,
@@ -87,6 +107,8 @@ export class DocumentAIController {
   }
 
   @Get(':id/status')
+  @ApiOperation({ summary: '전체 분석 진행 상태 조회', description: 'VLM 및 식별 진행 상태를 조회합니다.' })
+  @ApiResponse({ status: 200, description: '상태 정보 반환' })
   async getStatus(@CurrentTenant() tenantId: string, @Param('id') id: string) {
     const evidence = await this.prisma.evidence.findFirst({
       where: { id, tenantId },
