@@ -2,10 +2,11 @@ import { Controller, Post, Get, Param, Body, UseGuards } from '@nestjs/common';
 import { AnalyticsService } from './analytics.service';
 import { PredictOutcomeDto } from './dto/analytics.dto';
 import { CurrentTenant, CurrentUser } from '../../core/decorators';
-// Assuming we have some auth guard in core, though not explicitly required to import here if globally applied
-// import { AuthGuard } from '../../core/auth/auth.guard';
+import { AuthGuard } from '../../core/auth/auth.guard';
+import { TenantGuard } from '../../core/tenant/tenant.guard';
 
 @Controller('analytics')
+@UseGuards(AuthGuard, TenantGuard)
 export class AnalyticsController {
   constructor(private readonly analyticsService: AnalyticsService) {}
 

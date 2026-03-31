@@ -11,8 +11,10 @@ import {
   MedicalChronologyResult,
 } from '@shared/interfaces/rag.interface';
 
+import { AuthGuard } from '@core/auth/auth.guard';
+
 @Controller('rag')
-@UseGuards(TenantGuard)
+@UseGuards(AuthGuard, TenantGuard)
 export class RAGController {
   constructor(private readonly ragService: RAGService) {}
 

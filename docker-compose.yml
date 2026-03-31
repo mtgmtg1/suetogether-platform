@@ -57,5 +57,17 @@ services:
     environment:
       DATABASE_URL: postgresql://suetogether:${DB_PASSWORD:-devpassword}@postgres:5432/suetogether
 
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    container_name: suetogether-web
+    ports:
+      - '3000:3000'
+    environment:
+      NEXT_PUBLIC_API_URL: http://api:3001
+    depends_on:
+      - api
+
 volumes:
   pgdata:
