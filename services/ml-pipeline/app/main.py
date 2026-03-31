@@ -18,10 +18,11 @@ app.add_middleware(
 )
 
 # Router imports - Phase 2에서 Jules 에이전트가 구현
-# from app.vlm.router import router as vlm_router
-# from app.rag.router import router as rag_router
-# app.include_router(vlm_router, prefix="/vlm", tags=["VLM"])
-# app.include_router(rag_router, prefix="/rag", tags=["RAG"])
+from app.vlm.router import router as vlm_router
+from app.rag.router import router as rag_router
+
+app.include_router(vlm_router, prefix="/vlm", tags=["VLM"])
+app.include_router(rag_router, prefix="/rag", tags=["RAG"])
 
 
 @app.get("/health")
