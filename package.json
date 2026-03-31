@@ -1,6 +1,7 @@
 {
   "name": "suetogether-platform",
   "version": "0.1.0",
+  "packageManager": "npm@11.11.0",
   "private": true,
   "description": "차세대 B2B SaaS 집단분쟁 및 MDL 초자동화 플랫폼",
   "workspaces": [
